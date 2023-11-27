@@ -12,11 +12,11 @@ relatorios = Relatorios(gerenciador_tarefas)
 
 # Adicione mais rotas conforme necessário
 @app.route('/')
-def index():
-    return render_template('index.html')
-@app.route('/home')
-def home():
-    return render_template('home.html')
+def redir():
+    return logout()
+@app.route('/logout')
+def logout():
+    return render_template('logout.html')
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
@@ -29,15 +29,29 @@ def login():
             return redirect(url_for('home'))
 
         # If the login is unsuccessful, show an error message
-        error = 'Invalid username or password. Please try again.'
+        error = 'Nome de usuario ou senha incorretos.'
         return render_template('login.html', error=error)
 
     return render_template('login.html')
 @app.route('/cadastro')
 def cadastro():
+    if request.method == 'POST':
+        username = request.form.get('username')
+        email = request.form.get("email")
+        password = request.form.get('password')
+
+        if username in users:
+            error = 'Nome de usuario invalido. Tente novamente.'
+            return render_template('cadastro.html', error=error)
+        
+        nuevo = Usuario.__init__(nuevo, username, email, password)
+
+        users.append(nuevo)
+        
     return render_template('cadastro.html')
-def main():
-    return render_template('main.html')
+@app.route('/home')
+def home():
+    return render_template('home.html')
 
 if __name__ == '__main__':
     app.run(debug=True)
