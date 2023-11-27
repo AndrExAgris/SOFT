@@ -9,6 +9,7 @@ COPY . /app
 
 # Instala as dependências do projeto
 RUN pip install --upgrade pip
+RUN pip install flask flask_socketio
 RUN pip install --no-cache-dir -r requirements.txt
 RUN ls
 

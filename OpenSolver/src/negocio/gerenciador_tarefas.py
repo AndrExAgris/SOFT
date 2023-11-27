@@ -1,6 +1,6 @@
-from usuario import Usuario
-from tarefa import Tarefa
-from projeto import Projeto
+from ..dados.usuario import Usuario
+from ..dados.tarefa import Tarefa
+from ..dados.projeto import Projeto
 
 class GerenciadorTarefas:
     def __init__(self):

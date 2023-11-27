@@ -3,7 +3,7 @@ class Grupo:
         self.id_grupo = id_grupo
         self.nome = nome
         self.descricao = descricao
-        self.membros = []  # Lista para armazenar membros do grupo
+        self.membros = [] 
 
     def adicionar_membro(self, usuario):
         self.membros.append(usuario)

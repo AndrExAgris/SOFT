@@ -11,10 +11,6 @@ class Projeto:
     def remover_tarefa(self, tarefa):
         self.tarefas.remove(tarefa)
 
-    def notificar_membros(self, mensagem):
-        socketio.emit(f'notificacao_projeto_{self.id_projeto}', {'mensagem': mensagem}, namespace='/notificacoes')
-        pass
-
     def progresso_do_projeto(self):
         if not self.tarefas:
             return 0.0  
