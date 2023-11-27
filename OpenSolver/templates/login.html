@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -57,11 +58,45 @@
             width: 100%;
         }
     </style>
+
+    <script>
+
+        function login() {
+            const email = document.getElementById("email").value
+            const senha = document.getElementById("password").value
+
+            const usuarioLogin = {
+                email: email,
+                senha: senha
+            }
+
+            const listaUsuarios = JSON.parse(localStorage.getItem("listaUsuarios"))
+
+            if (listaUsuarios) {
+                const usuarioEncontrado = listaUsuarios.filter((usuario) => {
+                    usuario.email == usuarioLogin.email && usuario.senha == usuarioLogin.senha
+                })
+
+                console.log(usuarioEncontrado)
+
+                if (usuarioEncontrado) {
+                    window.location.replace("http://127.0.0.1:5000/home")
+                } else {
+                    console.log("Usuario não existe")
+                }
+            } else {
+                alert("Usuario não existe")
+            }
+        }
+
+    </script>
+
 </head>
+
 <body>
     <div class="login-container">
         <h2>Login</h2>
-        <form action="/home" method="post">
+        <form action="" method="">
             <div class="form-group">
                 <label for="username">Username:</label>
                 <input type="text" id="username" name="username" required>
@@ -71,8 +106,9 @@
                 <input type="password" id="password" name="password" required>
             </div>
             <div class="form-group">
-                <button type="submit">Login</button>
+                <button type="submit" onclick="login()">Login</button>
         </form>
     </div>
 </body>
+
 </html>

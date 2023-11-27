@@ -49,7 +49,7 @@ def cadastro():
         users.append(nuevo)
         
     return render_template('cadastro.html')
-@app.route('/home')
+@app.route('/home',methods=['GET', 'POST'])
 def home():
     return render_template('home.html')
 
