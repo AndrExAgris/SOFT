@@ -25,7 +25,7 @@ class TestaClienteCadastro(unittest.TestCase):
         self.assertIn(response,self.response.data.decode("utf-8"))
 
     def test_html_string_reponse(self):
-        response = "Email"
+        response = "email"
         self.assertIn(response,self.response.data.decode("utf-8"))
 
     def test_html_string_reponse(self):
